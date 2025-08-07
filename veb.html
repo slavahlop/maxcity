@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="veb.css">
+     
+    
+    <title>Document</title>
+</head>
+<body>
+ <div class="background"></div>
+<div class="at">
+  <div id="jj" class="pot">
+    <h1>Мы в сети:</h1>
+      <button class="rak81" onclick="window.open('https://web.telegram.org/a/#6452906082', '_blank')">
+         <img style="width: 40px;height: 40px;position: absolute;left: 3%;top: 5%;" src="684.webp" alt="">Связаться</button>
+  </div>
+  <div id="jot" class="pet">
+     <h1 style="position: absolute;top: 4.2%; left: 5%;">Оставьте отзыв</h1>
+  <form id="reviewForm">
+    <input style="position: absolute;width: 150px;height: 30px;left: 5%;border-radius: 10px;top: 12%;border: 2px solid #45a049;background-color: transparent;color: white;" type="text" id="username" placeholder="Ваше имя" required />
+    <textarea style="position: absolute; top: 20%;width: 500;height: 50px;border-radius: 10px;left: 5%;border: 2px solid #45a049;background-color: transparent;color: white;" id="review" placeholder="Ваш отзыв" required></textarea>
+    <button style="position: absolute;left: 5%;top: 28%;width: 125px;height: 25px;border-radius: 10px;background-color: #45a049;border: 2px solid #45a049;color: white;" type="submit">Отправить</button>
+  </form>
+
+  <h1 class="rere3" style="">Отзывы:</h1>
+ <div class="rere"><div class="rere1" id="reviews"></div>
+  </div>
+</div> 
+  <div class="yik">
+   <div class="at5"><h1>Наш офис всегда рядом</h1></div>
+   <div class="tet5" id="map"></div>
+  </div>
+  <div class="uk7">
+  <div id="tut" class="form-container">
+        <h2 class="form-title">Заполните анкету</h2>
+        <form>
+            <div class="form-group">
+                <label for="firstName">Имя:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName">Фамилия:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="middleName">Отчество:</label>
+                <input type="text" id="middleName" name="middleName">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Электронная почта:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Номер телефона:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Отправить</button>
+        </form>
+        </div>
+</div>
+</div>
+  <div class="content">
+    <div class="dep1">
+        <h1> <span>M</span><span>A</span><span>X</span></h1>
+    </div>
+    <div class="dep2">
+        <a href="">Главаная</a>
+        <a style="margin-left: 100px;" href="#map">Место</a>
+        <a style="margin-left: 100px;" href="#jj">Контакты</a>
+        <a style="margin-left: 100px;" href="#jot">Отзывы</a>
+    </div>
+    <div class="dep3">
+      <a href="">+7(911) 768-06-45</a>
+    </div>
+    </div>
+    <div class="overlay"></div>
+  </div>
+  <div class="ret">
+    <div class="ret1">
+      <h1>Лучший отдых-</h1>
+    </div>
+    <div class="ret3">
+      <h1>это время для души и тела</h1>
+    </div>
+    <div class="ret4">
+      <p>Здесь вы найдете идеи и советы, как сделать отпуск незабываемым: от уютных пляжей до захватывающих приключений в горах. Отдых — это момент, когда можно остановиться, вдохнуть полной грудью, отдохнуть от суеты и наполниться энергией.</p>
+    </div>
+    <button id="scrol" class="ret5">Заполнить анкету</button>
+    <button onclick="window.close()" class="ret6">Выйти</button>
+  </div>
+
+   <button id="scrollToTop" aria-label="Наверх"></button>
+   
+   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+  const button = document.getElementById('scrollToTop');
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 200) {
+      button.classList.add('show');
+    } else {
+      button.classList.remove('show');
+    }
+  });
+
+  button.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  document.getElementById('scrol').addEventListener('click', function() {
+    document.getElementById('tut').scrollIntoView({ behavior: 'smooth' });
+  });
+   ymaps.ready(init);
+    function init(){
+      var myMap = new ymaps.Map("map", {
+        center: [55.76, 37.64],
+        zoom: 10
+      });
+
+      var myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+        hintContent: 'Мы здесь',
+        balloonContent: 'Это наш офис'
+      });
+
+      myMap.geoObjects.add(myPlacemark);
+    };
+       // TODO: Замените на свои настройки Firebase из консоли
+    const firebaseConfig 
+={ apiKey: "AIzaSyCSfuUdVJU0dM6Ap8lsOxPjo5GhpBS63I4",
+  authDomain: "roviews-1a29a.firebaseapp.com",
+  projectId: "roviews-1a29a",
+  storageBucket: "roviews-1a29a.firebasestorage.app",
+  messagingSenderId: "54968775001",
+  appId: "1:54968775001:web:65371d5199123aeeb5dc48",
+  measurementId: "G-99E7BF5S68"};// Initialize Firebaseconst app = initializeApp(firebaseConfig);const analytics = getAnalytics(app
+
+
+    // Инициализация Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewsDiv = document.getElementById('reviews');
+
+    // Функция загрузки отзывов из Firestore
+    function loadReviews() {
+      reviewsDiv.innerHTML = 'Загрузка...';
+      db.collection('reviews').orderBy('created_at', 'desc').limit(10).get()
+        .then(snapshot => {
+          reviewsDiv.innerHTML = '';
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            const p = document.createElement('p');
+            const date = data.created_at ? data.created_at.toDate().toLocaleString() : '';
+            p.innerHTML = `<strong>${data.username}</strong> (${date}):<br>${data.review}`;
+            reviewsDiv.appendChild(p);
+          });
+        })
+        .catch(error => {
+          reviewsDiv.innerHTML = 'Ошибка загрузки отзывов.';
+          console.error(error);
+        });
+    }
+
+    // Обработка отправки формы
+    reviewForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const review = document.getElementById('review').value.trim();
+
+      if (!username || !review) return;
+
+      db.collection('reviews').add({
+        username,
+        review,
+        created_at: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .then(() => {
+        alert('Спасибо за отзыв!');
+        reviewForm.reset();
+        loadReviews();
+      })
+      .catch(error => {
+        alert('Ошибка при добавлении отзыва.');
+        console.error(error);
+      });
+    });
+
+    // Загрузка отзывов при загрузке страницы
+    loadReviews();
+</script>
+
+</body>
+</html>
